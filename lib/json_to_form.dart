@@ -170,6 +170,7 @@ class _CoreFormState extends State<CoreForm> {
   void onChange(int position, dynamic value) {
     this.setState(() {
       formItems[position]['value'] = value;
+
       _handleChanged();
     });
   }

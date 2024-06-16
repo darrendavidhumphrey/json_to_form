@@ -155,11 +155,13 @@ class _CoreFormState extends State<JsonSchema> {
   }
 
   void _handleChanged() {
+    _formKey.currentState!.validate();
     widget.onChanged(formGeneral);
   }
 
   void onChange(int position, dynamic value) {
-    this.setState(() {
+      this.setState(() {
+        _formKey.currentState!.validate();
       formGeneral['fields'][position]['value'] = value;
       this._handleChanged();
     });

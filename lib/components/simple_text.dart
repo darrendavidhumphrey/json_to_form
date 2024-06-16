@@ -45,6 +45,7 @@ class _SimpleText extends State<SimpleText> {
   @override
   Widget build(BuildContext context) {
     Widget label = SizedBox.shrink();
+
     if (Fun.labelHidden(item)) {
       label = new Container(
         child: new Text(
@@ -53,6 +54,7 @@ class _SimpleText extends State<SimpleText> {
         ),
       );
     }
+
     return new Container(
       margin: new EdgeInsets.only(top: 5.0),
       child: new Column(
