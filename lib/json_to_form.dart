@@ -47,12 +47,17 @@ class _CoreFormState extends State<CoreForm> {
           item['type'] == "Password" ||
           item['type'] == "Email" ||
           item['type'] == "TareaText") {
-        listWidget.add(new Container(
-            padding: new EdgeInsets.only(top: 5.0, bottom: 5.0),
-            child: new Text(
-              item['title'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-            )));
+
+        if (item['title'] != null) {
+          listWidget.add(new Container(
+              padding: new EdgeInsets.only(top: 5.0, bottom: 5.0),
+              child: new Text(
+                item['title'],
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 16.0),
+              )));
+        }
+
         listWidget.add(new TextField(
           controller: null,
           inputFormatters: item['validator'] != null && item['validator'] != ''
