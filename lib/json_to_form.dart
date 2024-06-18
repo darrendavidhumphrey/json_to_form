@@ -4,8 +4,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'components/measurement_input.dart';
-
 class CoreForm extends StatefulWidget {
   final String form;
   final dynamic formMap;

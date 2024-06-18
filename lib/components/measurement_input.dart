@@ -86,17 +86,15 @@ class _MeasurementInput extends State<MeasurementInput> {
   }
   @override
   Widget build(BuildContext context) {
-    Widget label = SizedBox.shrink();
+
 
     return new Container(
       margin: new EdgeInsets.only(top: 5.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          new Row(
+      child:
+      SizedBox.shrink(child:
+      new Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              label,
               new TextFormField(
                 controller: null,
                 initialValue: item['value'] ?? null,
@@ -137,8 +135,6 @@ class _MeasurementInput extends State<MeasurementInput> {
 
             ],
           ),
-        ],
-      ),
-    );
+    ));
   }
 }

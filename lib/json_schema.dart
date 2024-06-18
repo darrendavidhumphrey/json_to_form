@@ -33,15 +33,14 @@ class JsonSchema extends StatefulWidget {
   final AutovalidateMode? autovalidateMode;
 
   @override
-  _CoreFormState createState() =>
-      new _CoreFormState(formMap ?? json.decode(form!));
+  _JsonSchemaState createState() => _JsonSchemaState(formMap ?? json.decode(form!));
 }
 
-class _CoreFormState extends State<JsonSchema> {
+class _JsonSchemaState extends State<JsonSchema> {
   final dynamic formGeneral;
 
   late int radioValue;
-  _CoreFormState(this.formGeneral);
+  _JsonSchemaState(this.formGeneral);
 
   List<Widget> jsonToForm() {
 
