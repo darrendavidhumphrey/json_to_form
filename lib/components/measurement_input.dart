@@ -90,48 +90,53 @@ class _MeasurementInput extends State<MeasurementInput> {
 
     return new Container(
       margin: new EdgeInsets.only(top: 5.0),
-      child: new Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          label,
-          new TextFormField(
-            controller: null,
-            initialValue: item['value'] ?? null,
-            decoration: item['decoration'] ??
-                widget.decorations[item['key']] ??
-                new InputDecoration(
-                  hintText: item['placeholder'] ?? "",
-                  helperText: item['helpText'] ?? "",
-                ),
-            maxLines: 1,
-            onChanged: (String value) {
-              item['value'] = value;
-              widget.onChange(widget.position, value);
-            },
-            keyboardType: TextInputType.number,
-            validator: (value) {
-              if (widget.validations.containsKey(item['key'])) {
-                return widget.validations[item['key']](item, value);
-              }
-              if (item.containsKey('validator')) {
-                if (item['validator'] != null) {
-                  if (item['validator'] is Function) {
-                    return item['validator'](item, value);
+        children: [
+          new Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              label,
+              new TextFormField(
+                controller: null,
+                initialValue: item['value'] ?? null,
+                decoration: item['decoration'] ??
+                    widget.decorations[item['key']] ??
+                    new InputDecoration(
+                      hintText: item['placeholder'] ?? "",
+                      helperText: item['helpText'] ?? "",
+                    ),
+                maxLines: 1,
+                onChanged: (String value) {
+                  item['value'] = value;
+                  widget.onChange(widget.position, value);
+                },
+                keyboardType: TextInputType.number,
+                validator: (value) {
+                  if (widget.validations.containsKey(item['key'])) {
+                    return widget.validations[item['key']](item, value);
                   }
-                }
-              }
+                  if (item.containsKey('validator')) {
+                    if (item['validator'] != null) {
+                      if (item['validator'] is Function) {
+                        return item['validator'](item, value);
+                      }
+                    }
+                  }
 
-              if (item.containsKey('required')) {
-                if (item['required'] == true ||
-                    item['required'] == 'True' ||
-                    item['required'] == 'true') {
-                  return isRequired(item, value);
-                }
-              }
-              return null;
-            },
+                  if (item.containsKey('required')) {
+                    if (item['required'] == true ||
+                        item['required'] == 'True' ||
+                        item['required'] == 'true') {
+                      return isRequired(item, value);
+                    }
+                  }
+                  return null;
+                },
+              ),
+
+            ],
           ),
-
         ],
       ),
     );
