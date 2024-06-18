@@ -44,6 +44,10 @@ class _CoreFormState extends State<JsonSchema> {
   _CoreFormState(this.formGeneral);
 
   List<Widget> jsonToForm() {
+
+    print("CALLED json_schema _CoreFormState::jsonToForm---------------------------------------------");
+
+
     List<Widget> listWidget = [];
     if (formGeneral['title'] != null) {
       listWidget.add(Text(

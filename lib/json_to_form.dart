@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'components/measurement_input.dart';
+
 class CoreForm extends StatefulWidget {
   final String form;
   final dynamic formMap;
@@ -42,11 +44,10 @@ class _CoreFormState extends State<CoreForm> {
   List<Widget> jsonToForm() {
     List<Widget> listWidget = [];
 
+    print("CALLED json_to_form _CoreFormState::jsonToForm---------------------------------------------");
+
     for (var item in formItems) {
-      if (item['type'] == "Input" ||
-          item['type'] == "Password" ||
-          item['type'] == "Email" ||
-          item['type'] == "TareaText") {
+      if (item['type'] == "Input") {
 
         if (item['title'] != null) {
           listWidget.add(new Container(
@@ -87,10 +88,6 @@ class _CoreFormState extends State<CoreForm> {
           },
           obscureText: item['type'] == "Password" ? true : false,
         ));
-      }
-
-      if (item['type'] == "Measurement") {
-        print("Do some stuff in CoreState?");
       }
 
       if (item['type'] == "RadioButton") {
