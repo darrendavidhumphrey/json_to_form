@@ -89,6 +89,10 @@ class _CoreFormState extends State<CoreForm> {
         ));
       }
 
+      if (item['type'] == "Measurement") {
+        print("Do some stuff in CoreState?");
+      }
+
       if (item['type'] == "RadioButton") {
         listWidget.add(new Container(
             margin: new EdgeInsets.only(top: 5.0, bottom: 5.0),
