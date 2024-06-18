@@ -3,6 +3,7 @@ library json_to_form;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'components/index.dart';
+import 'components/measurement_input.dart';
 
 class JsonSchema extends StatefulWidget {
   const JsonSchema({
@@ -60,6 +61,16 @@ class _CoreFormState extends State<JsonSchema> {
     for (var count = 0; count < formGeneral['fields'].length; count++) {
       Map item = formGeneral['fields'][count];
 
+      if (item['type'] == "Measurement") {
+        listWidget.add(MeasurementInput(
+          item: item,
+          onChange: onChange,
+          position: count,
+          decorations: widget.decorations,
+          errorMessages: widget.errorMessages,
+          validations: widget.validations,
+        ));
+      }
       if (item['type'] == "Input" ||
           item['type'] == "Password" ||
           item['type'] == "Email" ||

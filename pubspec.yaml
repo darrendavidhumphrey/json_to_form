@@ -6,6 +6,7 @@ homepage: https://github.com/VictorRancesCode/json_to_form
 dependencies:
   flutter:
     sdk: flutter
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:
